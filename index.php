@@ -2,31 +2,30 @@
 <html lang="ja" class="h-100">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    
-    <!-- stylesheets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Calendar</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column h-100">
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand- navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a href="index.php" class="navbar-brand">My Calendar</a>
+            <a class="navbar-brand" href="index.php">My Calendar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="search.php" class="nav-link"><i class="fa fa-serch"></i>検索</a>
+                        <a class="nav-link" href="add.php"><i class="fa fa-plus"></i> 追加</a>
                     </li>
                     <li class="nav-item">
-                        <a href="add.php" class="nav-link"><i class="fa fa-plus"></i>追加</a>
+                        <a class="nav-link" href="search.php"><i class="fa fa-search"></i> 検索</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -65,9 +64,10 @@
                     <td>4</td>
                     <td>5</td>
                     <td>6</td>
-                    <td><a href="detail.php">7
+                    <td>
+                        <a href="detail.php">7
                             <div class="badges">
-                                <span class="badges text-wrap bg-warning">10:00 予定</span>
+                                <span class="badge text-wrap bg-warning">10:30 予定</span>
                             </div>
                         </a>
                     </td>
@@ -76,10 +76,10 @@
                     <td>
                         <a href="detail.php">8
                             <div class="badges">
-                                <span class="badge text-wrap bg-primary">9:00 ここに予定を表示します</span>
-                                <span class="badge text-wrap bg-danger">14:00 予定</span>
-                                <span class="badge text-wrap bg-primary">15:00 予定</span>
-                                <span class="badge text-wrap bg-primary">16:00 予定</span>
+                                <span class="badge text-wrap bg-primary">09:00 ここに予定を表示します</span>
+                                <span class="badge text-wrap bg-danger">14:00 予定２</span>
+                                <span class="badge text-wrap bg-primary">14:20 予定３</span>
+                                <span class="badge text-wrap bg-primary">20:15 予定４</span>
                             </div>
                         </a>
                     </td>
@@ -98,9 +98,9 @@
                     <td>
                         <a href="detail.php">19
                             <div class="badges">
-                                <span class="badge text-wrap bg-success">10:00 予定</span>
-                                <span class="badge text-wrap bg-info">12:00 予定</span>
-                                <span class="badge text-wrap bg-secondary">15:00 予定</span>
+                                <span class="badge text-wrap bg-success">10:00 予定１</span>
+                                <span class="badge text-wrap bg-info">12:00 予定２</span>
+                                <span class="badge text-wrap bg-secondary">15:00 予定３</span>
                             </div>
                         </a>
                     </td>
@@ -123,19 +123,20 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </main>
 
-<footer>
+<footer class="footer py-3 mt-auto bg-light">
     <div class="container text-center">
         <span class="text-muted">&copy; My Calendar</span>
     </div>
 </footer>
 
-<!-- script -->
+<!-- JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/moment.min.js"></script>
@@ -143,12 +144,12 @@
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 
 <script>
-    $(function () {
-        $('#ymPicker').datetimepicker({
-            format: 'YYYY-MM',
-            locale: 'ja'
-        });
+$(function () {
+    $('#ymPicker').datetimepicker({
+        format: 'YYYY-MM',
+        locale: 'ja'
     });
+});
 </script>
 </body>
 </html>
