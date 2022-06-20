@@ -52,13 +52,18 @@
                         </div>
                     </div>
 
+                    <div class="mb-4 dp-parent">
+                        <label for="inputEndDateTime" class="form-label">終了日時</label>
+                        <input type="text" name="end_datetime" id="inputEndDateTime" class="form-control task-datetime" placeholder="終了日時を入力してください">
+                    </div>
+
                     <div class="mb-4">
                         <label for="inputTask" class="form-label">予定</label>
                         <input type="text" id="inputTask" class="form-control" placeholder="予定を入力してください">
                     </div>
 
                     <div class="mb-5">
-                        <label for="selectColor" class="form-control">色</label>
+                        <label for="selectColor" class="form-label">色</label>
                         <select name="color" id="selectColor" class="form-select bg-light">
                             <option value="bg-light" selected>デフォルト</option>
                             <option value="bg-danger">赤</option>
@@ -75,7 +80,7 @@
                         <button type="submit" class="btn btn-primary">登録</button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -100,7 +105,19 @@ $(function () {
         format: 'YYYY-MM',
         locale: 'ja'
     });
+    
+    $('.task-datetime').datetimepicker({
+        dayViewHeaderFormat: 'YYYY年 MMMM',
+        format: 'YYYY/MM/DD HH:mm',
+        locale: 'ja',
+    });
+
+    $('#selectColor').bind('change', function(){
+        $(this).removeClass();
+        $(this).addClass('form-select').addClass($(this).val());
+    });
 });
+    
 </script>
 </body>
 </html>
