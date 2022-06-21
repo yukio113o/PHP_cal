@@ -105,27 +105,8 @@
         </div>
     </main>
 
-    <footer class="footer py-3 mt-auto bg-light">
-        <div class="container text-center">
-            <span class="text-muted">&copy; My Calendar</span>
-        </div>
-    </footer>
+    <?php require_once 'partials/footer.php'; ?>
 
-    <!-- JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/ja.js"></script>
-    <script src="js/bootstrap-datetimepicker.min.js"></script>
-
-    <script>
-        $(function() {
-            $('#ymPicker').datetimepicker({
-                format: 'YYYY-MM',
-                locale: 'ja'
-            });
-        });
-    </script>
 </body>
 
 </html>
