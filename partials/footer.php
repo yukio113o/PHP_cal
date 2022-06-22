@@ -1,6 +1,6 @@
 <footer class="footer py-3 mt-auto bg-light">
     <div class="container text-center">
-        <span class="text-muted">&copy; My Calendar</span>
+        <span class="text-muted">&copy; <?= APP_NAME; ?></span>
     </div>
 </footer>
 
