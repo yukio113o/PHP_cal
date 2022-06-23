@@ -1,5 +1,5 @@
 <?php 
-    require_once 'config.php';
+    require_once 'libs/config.php';
     $title = '予定の詳細 | ' . APP_NAME;
 ?>
 

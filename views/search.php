@@ -1,9 +1,13 @@
+<?php 
+    require_once 'libs/config.php';
+    $title = '予定を検索 | ' . APP_NAME;
+?>
+
 <!DOCTYPE html>
 <html lang="ja" class="h-100">
 
 <head>
     <?php
-        $title = '予定を検索 | My Calendar';
         require_once 'partials/head.php';
     ?>
 </head>

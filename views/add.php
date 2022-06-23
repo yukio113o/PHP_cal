@@ -1,6 +1,10 @@
-<?php 
-    require_once 'config.php';
-    $title = '予定の編集 | ' . APP_NAME;
+<?php
+    require_once 'libs/config.php';
+    require_once 'libs/function.php';
+    $title = '予定の追加 | ' . APP_NAME;
+
+    $conn = connDB();
+    exit('接続');
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <h4 class="text-center">予定の編集</h4>
+                    <h4 class="text-center">予定の追加</h4>
 
                     <form method="post">
                         <div class="mb-4 dp-parent">
@@ -56,7 +60,7 @@
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">更新</button>
+                            <button type="submit" class="btn btn-primary">登録</button>
                         </div>
                     </form>
 
