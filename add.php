@@ -1,10 +1,16 @@
 <?php
     require_once 'libs/config.php';
-    require_once 'libs/function.php';
+    require_once 'libs/functions.php';
     $title = '予定の追加 | ' . APP_NAME;
 
     $conn = connDB();
-    exit('接続');
+
+    $sql = 'INSERT INTO schedules(start_datetime, end_datetime, task, color, created_at, modified_at)
+    VALUES("2021-3-15 10:00", "2021-3-15 11:15", "test", "bg-info", now(), now())';
+
+    $conn->exec($sql);
+    exit('保存しました');
+
 ?>
 
 <!DOCTYPE html>
