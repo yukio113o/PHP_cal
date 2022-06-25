@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindValue(':color', $color, PDO::PARAM_STR);
 
         $stmt->execute();
+
+        header('Location:datail.php?ymd='.date('Y-m-d', strtotime($start_datetime)));
+        exit();
     }
 }
 ?>

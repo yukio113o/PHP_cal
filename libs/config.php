@@ -1,4 +1,7 @@
 <?php
+    //timezone
+    date_default_timezone_set('Asia/Tokyo');
+
     //title
     define('APP_NAME', 'My Calendar');
 
