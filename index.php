@@ -1,6 +1,25 @@
 <?php 
     require_once 'libs\config.php';
     $title = 'HOME | ' . APP_NAME; 
+
+    if(isset($_GET['ym'])) {
+        $ym = $_GET['ym'];
+    } else {
+        $ym = date('Y-m');
+    }
+
+    $time_stamp = strtotime($ym, '-01');
+    if($time_stamp === false) {
+        $ym = date('Y-m');
+        $time_stamp = strtotime($ym, '-01');
+    }
+
+    $day_count = date('t', $time_stamp);
+    $seven_days = date('N', $time_stamp);
+    $cal_title = date('Y年n月', $time_stamp);
+    $prev = date('Y-m', strtotime('-1 month', $time_stamp));
+    $next = date('Y-m', strtotime('+1 month', $time_stamp));
+    $today = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +40,9 @@
             <table class="table table-bordered calendar">
                 <thead>
                     <tr class="head-cal fs-4">
-                        <th colspan="1" class="text-start"><a href="#">&lt;</a></th>
-                        <th colspan="5">2021年3月</th>
-                        <th colspan="1" class="text-end"><a href="#">&gt;</a></th>
+                        <th colspan="1" class="text-start"><a href="index.php?ym=<?= $prev; ?>">&lt;</a></th>
+                        <th colspan="5"><?= $cal_title; ?></th>
+                        <th colspan="1" class="text-end"><a href="index.php?ym=<?= $next; ?>">&gt;</a></th>
                     </tr>
                     <tr class="head-week">
                         <th>月</th>
