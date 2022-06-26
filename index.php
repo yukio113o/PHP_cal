@@ -1,5 +1,7 @@
 <?php 
-    require_once 'libs\config.php';
+    require_once 'libs/config.php';
+    require_once 'libs/functions.php';
+
     $title = 'HOME | ' . APP_NAME; 
 
     if(isset($_GET['ym'])) {
@@ -24,9 +26,36 @@
     $week = '';
     $week .= str_repeat('<td></td>', $seven_days - 1);
 
+    $conn = connDB();
+
     for($day = 1; $day <= $day_count; $day++, $seven_days++) {
 
-        $week .= '<td>' . $day . '</td>';
+        $date = $ym . '-' . sprintf('%02d', $day);
+
+        $sql = 'SELECT * FROM schedules WHERE CAST(start_datetime AS DATE) = :start_datetime ORDER BY start_datetime ASC';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':start_datetime', $date, PDO::PARAM_STR);
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+
+        if($date == $today) {
+            $week .= '<td class="today>';
+        } else {
+            $week .= '<td>';
+        }
+
+        $week .= '<a href="detail.php?ymd=' . $date . '">' . $day;
+
+        if(!empty($rows)) {
+            $week .= '<div class="badges">';
+                foreach($rows as $row) {
+                    $task = date('H:i', strtotime($row['start_datetime']) . ' ' . $row['task']);
+                    $week .= '<span class="badges text-wrap ' . $row['color'] . '">' . $task . '</span>';
+                }
+            $week .= '</div>';
+        }
+
+        $week .= '</a></td>';
 
         if($seven_days % 7 == 0 || $day == $day_count) {
 

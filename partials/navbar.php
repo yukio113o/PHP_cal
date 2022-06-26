@@ -14,7 +14,7 @@
                             <a class="nav-link" href="search.php"><i class="fa fa-search"></i> 検索</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex" action="index.php">
                         <input type="text" name="ym" class="form-control me-2" placeholder="年月を選択" id="ymPicker">
                         <button class="btn btn-outline-light text-nowrap" type="submit">表示</button>
                     </form>
