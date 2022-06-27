@@ -18,4 +18,15 @@ function connDB() {
         exit($e->getMessage());
     }
 }
+
+function getSchedules($conn, $date) {
+
+    $sql = 'SELECT * FROM schedules WHERE CAST(start_datetime AS DATE) = :start_datetime ORDER BY start_datetime ASC';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':start_datetime', $date, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchAll();
+
+}
+
 ?>

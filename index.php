@@ -32,11 +32,7 @@
 
         $date = $ym . '-' . sprintf('%02d', $day);
 
-        $sql = 'SELECT * FROM schedules WHERE CAST(start_datetime AS DATE) = :start_datetime ORDER BY start_datetime ASC';
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':start_datetime', $date, PDO::PARAM_STR);
-        $stmt->execute();
-        $rows = $stmt->fetchAll();
+        $rows = getSchedules($conn, $date);
 
         if($date == $today) {
             $week .= '<td class="today>';
@@ -49,7 +45,7 @@
         if(!empty($rows)) {
             $week .= '<div class="badges">';
                 foreach($rows as $row) {
-                    $task = date('H:i', strtotime($row['start_datetime']) . ' ' . $row['task']);
+                    $task = date('H:i', strtotime($row['start_datetime'])) . ' ' . $row['task'];
                     $week .= '<span class="badges text-wrap ' . $row['color'] . '">' . $task . '</span>';
                 }
             $week .= '</div>';
