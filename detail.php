@@ -66,7 +66,10 @@
                                 <td><?= $row['task']; ?></td>
                                 <td>
                                     <a href="edit.php?id=<?= $row['schedule_id']; ?>" class="btn btn-sm btn-link">編集</a>
-                                    <a href="#" class="btn btn-sm btn-link">削除</a>
+                                    <a href="javascript:void(0);"
+                                       onclick="var ok=confirm('予定を削除しますか？'); if(ok) location.href='delete.php?id=<?= $row['schedule_id']; ?>'" 
+                                       class="btn btn-sm btn-link">削除
+                                    </a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
