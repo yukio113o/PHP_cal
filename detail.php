@@ -63,12 +63,12 @@
                             <tr>
                                 <td><i class="fas fa-square <?= $color; ?>"></i></td>
                                 <td><?= $start; ?> ~ <?= $end; ?></td>
-                                <td><?= $row['task']; ?></td>
+                                <td><?= xss($row['task'], ENT_QUOTES); ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?= $row['schedule_id']; ?>" class="btn btn-sm btn-link">編集</a>
+                                    <a href="edit.php?id=<?= $row['schedule_id']; ?>" class="btn btn-sm btn-link text-nowrap">編集</a>
                                     <a href="javascript:void(0);"
-                                       onclick="var ok=confirm('予定を削除しますか？'); if(ok) location.href='delete.php?id=<?= $row['schedule_id']; ?>'" 
-                                       class="btn btn-sm btn-link">削除
+                                       onclick="const ok=confirm('予定を削除しますか？'); if(ok) location.href='delete.php?id=<?= $row['schedule_id']; ?>'" 
+                                       class="btn btn-sm btn-link text-nowrap">削除
                                     </a>
                                 </td>
                             </tr>

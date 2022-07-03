@@ -24,8 +24,8 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
         exit();
     }
 
-    $start_datetime = $row['start_datetime'];
-    $end_datetime = $row['end_datetime'];
+    $start_datetime = str_replace(' ', 'T', $row['start_datetime']);
+    $end_datetime = str_replace(' ', 'T', $row['end_datetime']);
     $task = $row['task'];
     $color = $row['color'];
     $err = [];
@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
 
         $stmt->execute();
 
-        header('Location:datail.php?ymd='.date('Y-m-d', strtotime($start_datetime)));
+        header('Location:detail.php?ymd='.date('Y-m-d', strtotime($start_datetime)));
         exit();
     }
 
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
                 <div class="col-lg-6 offset-lg-3">
                     <h4 class="text-center">予定の編集</h4>
 
-                    <form method="post">
+                    <form method="post" novalidate>
                         <div class="mb-4 dp-parent">
                             <label for="inputStartDateTime" class="form-label">開始日時</label>
                             <input type="text" name="start_datetime" id="inputStartDateTime" class="form-control task-datetime <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="開始日時を選択してください" value="<?= $start_datetime; ?>">

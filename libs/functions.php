@@ -1,5 +1,5 @@
 <?php 
-//DB
+
 function connDB() {
 
     $host = 'localhost';
@@ -27,6 +27,10 @@ function getSchedules($conn, $date) {
     $stmt->execute();
     return $stmt->fetchAll();
 
+}
+
+function xss($string) {
+    return htmlspecialchars($string, ENT_QUOTES);
 }
 
 ?>

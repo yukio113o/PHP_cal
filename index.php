@@ -45,7 +45,7 @@
         if(!empty($rows)) {
             $week .= '<div class="badges">';
                 foreach($rows as $row) {
-                    $task = date('H:i', strtotime($row['start_datetime'])) . ' ' . $row['task'];
+                    $task = date('H:i', strtotime($row['start_datetime'])) . ' ' . xss($row['task']);
                     $week .= '<span class="badges text-wrap ' . $row['color'] . '">' . $task . '</span>';
                 }
             $week .= '</div>';

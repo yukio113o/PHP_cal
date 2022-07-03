@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $stmt->execute();
 
-        header('Location:datail.php?ymd='.date('Y-m-d', strtotime($start_datetime)));
+        header('Location:detail.php?ymd='.date('Y-m-d', strtotime($start_datetime)));
         exit();
     }
 }
@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-lg-6 offset-lg-3">
                     <h4 class="text-center">予定の追加</h4>
 
-                    <form method="post">
+                    <form method="post" novalidate>
                         <div class="mb-4 dp-parent">
                             <label for="inputStartDateTime" class="form-label">開始日時</label>
-                            <input type="text" name="start_datetime" id="inputStartDateTime" class="form-control task-datetime <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="開始日時を選択してください" value="<?= $start_datetime; ?>">
+                            <input type="text" name="start_datetime" id="inputStartDateTime" class="form-control task-datetime <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="開始日時を選択してください" value="<?= xss($start_datetime); ?>">
                             <div id="inputStartDateTimeFeedback" class="invalid-feedback">
                                 * 開始日時を選択してください
                             </div>
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="mb-4 dp-parent">
                             <label for="inputEndDateTime" class="form-label">終了日時</label>
-                            <input type="text" name="end_datetime" id="inputEndDateTime" class="form-control task-datetime <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="終了日時を入力してください" value="<?= $end_datetime; ?>">
+                            <input type="text" name="end_datetime" id="inputEndDateTime" class="form-control task-datetime <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="終了日時を入力してください" value="<?= xss($end_datetime); ?>">
                             
                             <?php if (!empty($err['end_datetime'])) : ?>
                                 <div id="inputStartDatetime" class="invalid-feedback">
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="mb-4">
                             <label for="inputTask" class="form-label">予定</label>
-                            <input type="text" name="task" id="inputTask" class="form-control <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="予定を入力してください" value="<?= $task; ?>">
+                            <input type="text" name="task" id="inputTask" class="form-control <?php if (!empty($err['start_datetime'])) echo 'is-invalid'; ?>" placeholder="予定を入力してください" value="<?= xss($task); ?>">
 
                             <?php if (!empty($err['task'])) : ?>
                                 <div id="inputStartDatetime" class="invalid-feedback">
