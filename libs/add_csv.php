@@ -1,9 +1,9 @@
 <?php 
-    require_once 'libs/config.php';
-    require_once 'libs/functions.php';
+    require_once 'config.php';
+    require_once 'functions.php';
 
-    $csv = file_get_contents('https://www8.cao.go.jp/chosei/shukujitsu/shukujitsu.csv');
-    $csv = mb_convert_encoding($csv, 'UTF-8', 'SJIS-win');
+    $csv = file_get_contents('https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv');
+    $csv = mb_convert_encoding($csv, 'utf-8', 'sjis-win');
 
     $tmp = tmpfile();
     fwrite($tmp, $csv);
@@ -32,4 +32,6 @@
         $stmt->bindValue(':holiday_name', $row[1], PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    echo $csv;
 ?>
