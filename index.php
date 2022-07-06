@@ -28,6 +28,13 @@
 
     $conn = connDB();
 
+    $sql = 'SELECT holiday_date, holiday_name FROM holidays WHERE YEAR(holiday_date) = :year AND MONTH(holiday_date) = :month';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':year', date('Y', strtotime($ym)), PDO::PARAM_STR);
+    $stmt->bindValue(':month', date('m', strtotime($ym)), PDO::PARAM_STR);
+    $stmt->execute();
+    $holiday_list = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+
     for($day = 1; $day <= $day_count; $day++, $seven_days++) {
 
         $date = $ym . '-' . sprintf('%02d', $day);
@@ -40,7 +47,14 @@
             $week .= '<td>';
         }
 
-        $week .= '<a href="detail.php?ymd=' . $date . '">' . $day;
+        $week .= '<a href="detail.php?ymd=' . $date . '">';
+
+        if(!empty($holiday_list[$date])) {
+            $week .= '<span class="text-danger">' . $day . '</span>';
+            $week .= '<span class="text-danger fw-bolder d-none d-md-inline holiday-name">' . $holiday_list[$date] . '</span>';
+        } else {
+            $week .= $day;
+        }
 
         if(!empty($rows)) {
             $week .= '<div class="badges">';

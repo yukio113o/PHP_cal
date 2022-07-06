@@ -15,6 +15,12 @@
     $conn = connDB();
     $rows = getSchedules($conn, $ymd);
 
+    $sql = 'SELECT holiday_name FROM holidays WHERE holiday_date = :holiday_date LIMIT 1';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':holiday_date', $ymd, PDO::PARAM_STR);
+    $stmt->execute();
+    $holiday = $stmt->fetchColumn();
+
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +41,11 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <h4 class="text-center"><?= $ymd_format; ?></h4>
+
+                    <?php if($holiday) :?>
+                        <div class="text-center text-danger"><?= $holiday ?></div>
+                    <?php endif; ?>
+
                     <?php if(!empty($rows)): ?>
                     <table class="table">
                         <thead>

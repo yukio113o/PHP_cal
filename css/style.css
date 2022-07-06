@@ -107,6 +107,11 @@ a {
     color: #343a40;
 }
 
+.holiday_name {
+    font-size: 11px;
+    padding-left: 6px;
+}
+
 /*
 ---------------------------
     DateTimePicker
