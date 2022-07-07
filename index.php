@@ -60,7 +60,7 @@
             $week .= '<div class="badges">';
                 foreach($rows as $row) {
                     $task = date('H:i', strtotime($row['start_datetime'])) . ' ' . xss($row['task']);
-                    $week .= '<span class="badges text-wrap ' . $row['color'] . '">' . $task . '</span>';
+                    $week .= '<span class="badge text-wrap ' . $row['color'] . '">' . $task . '</span>';
                 }
             $week .= '</div>';
         }

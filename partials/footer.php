@@ -35,7 +35,7 @@
         });
 
         const ua = navigator.userAgent;
-        if((ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.userAgent('Andrid') > 0) && ua.indexOf('Mobile') > 0) {
+        if((ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) && ua.indexOf('Mobile') > 0) {
             $('input[name="ym"]').removeAttr('id').attr('type', 'month');
             $('input["name=start_datetime"], input["name=end_datetime"]').removeClass('task-datetime').attr('type', 'datetime-local');
             $('input["name=start_date"], input["name=end_date"]').removeClass('search-date').attr('type', 'date');
